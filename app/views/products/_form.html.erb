@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-4">
+
+    <%= form_for @product do |f| %>
+      <div class="form-group">
+        <label for="name">Product name</label>
+        <%= f.text_field :name, :class => 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Product Description</label>
+        <%= f.text_area :description, :class => 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <label for="price">Product Price</label>
+        <%= f.number_field :price, :class => 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <label for="stock_count">Product Stock</label>
+        <%= f.number_field :stock_count, :class => 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <label for="img_url">Product Image</label>
+        <%= f.url_field :img_url, :class => 'form-control' %>
+      </div>
+
+      <br>
+
+      <%= f.submit :class => 'btn btn-success' %>
+
+    <% end %>
+
+  </div>
+</div>
