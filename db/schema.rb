@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20191202201251) do
     t.integer  "user_id"
     t.integer  "address"
     t.integer  "product_id"
-    t.integer  "purchase_price"
+    t.decimal  "purchase_price"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20191202201251) do
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.float    "price"
+    t.decimal  "price"
     t.integer  "stock_count"
     t.integer  "user_id"
     t.datetime "created_at",  null: false
