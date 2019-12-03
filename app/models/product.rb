@@ -21,5 +21,5 @@ class Product < ApplicationRecord
         else puts "tag not associated product"
         end
     end
-
+    
 end

@@ -4,7 +4,7 @@ class CreateOrders < ActiveRecord::Migration[5.0]
       t.integer :user_id
       t.string :address
       t.integer :product_id
-      t.integer :purchase_price
+      t.decimal :purchase_price
       t.string  :status
 
       t.timestamps
