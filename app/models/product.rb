@@ -1,13 +1,13 @@
 class Product < ApplicationRecord
-  belongs_to :user
-  has_many :product_tags
-  has_many :tags, through: :product_tags
-  has_many :orders
-  has_many :users, through: :orders
-
-  validates :name, :description, :price, :stock_count, presence: true
-  validates :description, length: { minimum: 3 }
-  validates :name, uniqueness: true
+  
+    belongs_to :user
+    has_many :product_tags
+    has_many :tags, through: :product_tags
+    has_many :orders
+    has_many :users, through: :orders
+    has_many :basket_joins
+    has_many :order_product_joins
+    has_many :orders, through: :order_product_joins
 
   def add_tag_by_id(tag_id)
     if !ProductTag.find_by(product_id: self.id, tag_id: tag_id)
