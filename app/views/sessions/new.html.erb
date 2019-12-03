@@ -1,8 +1,6 @@
-<h1>Homepage</h1>
+<h1>Login or <%= link_to  "Create Account", new_user_path %></h1>
 
-<h2>Login or <%= link_to  "Create Account", new_user_path %></h2>
-
-<p style="color:red"><%= flash[:notice] %></p>
+<p style="color:red"><%= flash.now[:notice] %></p>
 <%= form_tag sessions_path do |f| %>
 <%= label :user, :email %> <br>
 <%= text_field :user, :email %> <br>
