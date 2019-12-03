@@ -1,8 +1,8 @@
 class User < ApplicationRecord
-
     has_many :products
     has_many :orders
     has_many :products, through: :orders
+    has_secure_password
 
     def products
         Product.where user_id: self.id
