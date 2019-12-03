@@ -1,5 +1,7 @@
 <h1><%= @product.name %></h1>
-<b>By <%=@product.seller_name%></b><br>
+<p>By <%=@product.seller_name%></p><br>
 <%= @product.description %>
 <%= @product.price %>
+<%if !@product.img_url%>
 <%= @product.img_url %>
+<%end%>

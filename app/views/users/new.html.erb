@@ -1,5 +1,15 @@
 <h1>Create Account</h1>
 
+<%if flash[:errors]%>
+<p>
+    <% flash[:errors].each do |error| %>
+       <li style="color:red">
+           <%= error %>
+       </li>
+    <%end%>
+</p>
+<%end%>
+
 <%= form_for @user do |f| %>
 <%= f.label "Name" %><br>
 <%= f.text_field :name %><br>

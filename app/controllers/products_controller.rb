@@ -1,10 +1,13 @@
 class ProductsController < ApplicationController
-  def new
-    @product = Product.new
-  end
+  before_action :find_product, only: [:show, :edit, :update]
+  before_action :authorize_user, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @products = Product.all 
+    @products = Product.all
+  end
+
+  def new
+    @product = Product.new
   end
 
   def show
@@ -13,6 +16,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.user = current_user
     if @product.save
       redirect_to product_path(@product)
     else
@@ -26,6 +30,10 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :price, :stock_count)
+    params.require(:product).permit(:name, :description, :price, :stock_count, :img_url)
+  end
+
+  def find_product
+    @product = Product.find(params[:id])
   end
 end
