@@ -5,6 +5,9 @@ class Product < ApplicationRecord
     has_many :tags, through: :product_tags
     has_many :orders
     has_many :users, through: :orders
+    has_many :basket_joins
+    has_many :order_product_joins
+    has_many :orders, through: :order_product_joins
 
 
     def add_tag_by_id(tag_id)
