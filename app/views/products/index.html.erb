@@ -1,20 +1,61 @@
-<div class="container">
+ <!-- Image and text -->
+ <section class="navbar-mobile">
+          <span class="navbar-divider d-mobile-none"></span>
+
+          <ul class="nav nav-navbar">
+
+            <li class="nav-item">
+
+             <li class="nav-item">
+              <a class="nav-link" href="#">Log In</span></a>
+            </li>
+              <a class="nav-link" href="#">Sign Up</span></a>
+            </li>
+          </ul>
+</section>
+ 
+ <div class="container">
     <div class="text-center">
       <h1 class="text-center">Christmas Best Sellers</h1>
-      <button class="btn btn-info" style="margin: 1em"><a href="/products/new">Create a product</a></button>
     </div>
 
+    <div class="row">
     <% @products.each do |product| %>
       <div class="col-md-4 text-center" style="padding: 1em">
         <div class="card">
-          <a href="/products/<%=product.id%>"><img class="card-img-top img-thumbnail" style="height: 15rem" src="<%= product.img_url %>" alt="product"></a>
+          <a href="/products/<%=product.id%>"><img class="card-img-top img-thumbnail" style="height: 18rem" src="<%= product.img_url %>" alt="product"></a>
           <div class="card-block">
             <h4 class="card-title text-center"><%= product.description %></h4>
-            <p class="card-text" style="height: 10rem"><%= product.description %></p>
+            <p class="card-text" style="height: 2rem"><%= product.description %></p>
             <a href="/products/<%=product.id%>" style="width: 100%" class="btn btn-info">Product details</a>
-          </div>
+          </div>   
         </div>
       </div>
     <% end %>
+    </div>
   </div>
 </div>
+
+<!-- <div class="container">
+  <div class="row">
+  <% @products.each do |product| %>
+    <div class="col"> Product 1</div>
+    <a href="/products/<%=product.id%>">
+    <%= product.name %>
+    <%= product.description%>
+
+    <div class="col">Product 2</div>
+    <div class="w-100"></div>
+    <div class="col">Product 3</div>
+    <div class="col">Product 4</div>
+  </div>
+  <div class="row">
+    <div class="col">
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<button class="btn btn-info" style="margin: 1em"><a href="/products/new">Create a product</a></button>
+
+-->
