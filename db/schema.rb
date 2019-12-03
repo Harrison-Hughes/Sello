@@ -14,9 +14,14 @@ ActiveRecord::Schema.define(version: 20191202201251) do
 
   create_table "orders", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "address"
+    t.string   "address"
     t.integer  "product_id"
+<<<<<<< HEAD
+    t.integer  "purchase_price"
+    t.string   "status"
+=======
     t.decimal  "purchase_price"
+>>>>>>> 6711691776149d71c07982eb0938320d60b5ada9
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
