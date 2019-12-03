@@ -9,12 +9,12 @@ class Product < ApplicationRecord
     has_many :order_product_joins
     has_many :orders, through: :order_product_joins
 
-  #   def add_tag_by_id(tag_id)
-  #     if !ProductTag.find_by(product_id: self.id, tag_id: tag_id)
-  #       ProductTag.create(product_id: self.id, tag_id: tag_id)
-  #     else puts "tag already associated with product"
-  #     end
-  #   end
+    def add_tag_by_id(tag_id)
+      if !ProductTag.find_by(product_id: self.id, tag_id: tag_id)
+        ProductTag.create(product_id: self.id, tag_id: tag_id)
+      else puts "tag already associated with product"
+      end
+    end
 
   def remove_tag_by_id(tag_id)
     if ProductTag.find_by(product_id: self.id, tag_id: tag_id)
