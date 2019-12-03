@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="text-center">
+      <h1 class="text-center">Christmas Best Sellers</h1>
+      <button class="btn btn-info" style="margin: 1em"><a href="/products/new">Create a product</a></button>
+    </div>
+
+    <% @products.each do |product| %>
+      <div class="col-md-4 text-center" style="padding: 1em">
+        <div class="card">
+          <a href="/products/<%=product.id%>"><img class="card-img-top img-thumbnail" style="height: 15rem" src="<%= product.img_url %>" alt="product"></a>
+          <div class="card-block">
+            <h4 class="card-title text-center"><%= product.description %></h4>
+            <p class="card-text" style="height: 10rem"><%= product.description %></p>
+            <a href="/products/<%=product.id%>" style="width: 100%" class="btn btn-info">Product details</a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

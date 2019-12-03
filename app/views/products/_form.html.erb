@@ -1,3 +1,9 @@
+<% if @product.errors.any? %>
+<% @product.errors.full_messages.each do |error| %>
+<%= error %>
+<% end %>
+<% end %>
+
 <div class="row">
   <div class="col-md-4">
 
@@ -25,6 +31,11 @@
       <div class="form-group">
         <label for="img_url">Product Image</label>
         <%= f.url_field :img_url, :class => 'form-control' %>
+      </div>
+      
+      <div class="dropdown-menu">
+        <label for="tag">
+        <%= f.collection_select :tag_ids, Tag.all, :id, :name, :class => "btn btn-danger dropdown-toggle"%>
       </div>
 
       <br>
