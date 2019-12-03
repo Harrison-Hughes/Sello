@@ -11,8 +11,12 @@
   </head>
 <body>
 
-<nav class="navbar navbar-dark bg-primary justify-content-between">
+<nav class="navbar navbar-dark bg-info justify-content-between">
   <a class="navbar-brand" href="/">SELLO</a>
+  <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-light nav-link" type="submit">Search</button>
+    </form>
   <ul class="navbar-nav">
       <% unless session[:user_id] %>
         <li class="nav-item">
@@ -27,9 +31,12 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <a class="nav-link" href="#">
-            Log Out
-          </a>
+          <form class="form-inline" method="POST" action="/sessions">
+            <input name="_method" type="hidden" value="delete">
+            <button type="submit" class="btn btn-outline nav-link">
+              Log Out
+            </button>
+          </form>
         </li>
       <% end %>
     </ul>
