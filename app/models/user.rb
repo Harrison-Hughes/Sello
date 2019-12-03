@@ -31,4 +31,8 @@ class User < ApplicationRecord
         end
     end
 
+    def past_orders
+        orders = Order.where(user_id: self.id)
+    end
+
 end
