@@ -15,8 +15,6 @@ product2.add_tag_by_id(1)
 product2.add_tag_by_id(3)
 product3.add_tag_by_id(3)
 
-order = user2.place_order(product_id: 1, address: "user2 home address")
-
 user1 = User.find(1)
 user2 = User.find(2)
 product1 = Product.find(1)
@@ -25,4 +23,4 @@ product3 = Product.find(3)
 tag1 = Tag.find(1)
 tag2 = Tag.find(2)
 tag3 = Tag.find(3)
-order = Order.first
+

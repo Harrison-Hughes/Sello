@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update]
+  before_action :authorize_user, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @products = Product.all
@@ -10,10 +11,12 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @product = Product.find(params[:id])
   end
 
   def create
     @product = Product.new(product_params)
+    @product.user = current_user
     if @product.save
       redirect_to product_path(@product)
     else

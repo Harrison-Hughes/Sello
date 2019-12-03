@@ -45,3 +45,5 @@ jspm_packages
 /tmp
 *.log
 
+*.development.sqlite3
+
