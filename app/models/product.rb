@@ -20,7 +20,8 @@ class Product < ApplicationRecord
     if ProductTag.find_by(product_id: self.id, tag_id: tag_id)
       pt = ProductTag.where(product_id: self.id, tag_id: tag_id)
       pt.destroy
-    else puts "tag not associated product"     end
+    else puts "tag not associated product"     
+    end
   end
 
     def seller_name

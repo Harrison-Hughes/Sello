@@ -1,0 +1,14 @@
+<h1>Homepage</h1>
+
+<h2>Login or <%= link_to  "Create Account", new_user_path %></h2>
+
+
+<%= form_tag ('/') do |f| %>
+<%= label :user, :email %> <br>
+<%= text_field :user, :email %> <br>
+
+<%= label :user, :password %> <br>
+<%= password_field :user, :password %> <br> <br>
+
+<%= submit_tag "Login" %>
+<% end %>
