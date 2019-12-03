@@ -21,5 +21,9 @@ class Product < ApplicationRecord
         else puts "tag not associated product"
         end
     end
+
+    def seller_name
+        User.find(self.user_id).name
+    end
     
 end
