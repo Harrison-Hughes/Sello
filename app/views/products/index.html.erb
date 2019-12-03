@@ -1,44 +1,30 @@
- <!-- Image and text -->
- <section class="navbar-mobile">
-          <span class="navbar-divider d-mobile-none"></span>
+<div>
+  <h1 class="text-center">Christmas Best Sellers</h1>
+</div><br>
 
-          <ul class="nav nav-navbar">
-
-            <li class="nav-item">
-
-             <li class="nav-item">
-              <a class="nav-link" href="#">Log In</span></a>
-            </li>
-              <a class="nav-link" href="#">Sign Up</span></a>
-            </li>
-          </ul>
-</section>
- 
- <div class="container">
-    <div class="text-center">
-      <h1 class="text-center">Christmas Best Sellers</h1>
-    </div>
-
-    <div class="row">
-    <% @products.each do |product| %>
-      <div class="col-md-4 text-center" style="padding: 1em">
-        <div class="card">
-            <%if product.img_url%>
-              <a href="/products/<%=product.id%>">
-                <img class="card-img-top img-thumbnail"
-                     style="height: 15rem"
-                     src="<%= product.img_url %>"
-                     alt="product">
-              </a>
-            <%end%>
-            <div class="card-block">
-              <h4 class="card-title text-center"><%= product.description %></h4>
-              <p class="card-text" style="height: 2rem"><%= product.description %></p>
-              <a href="/products/<%=product.id%>" style="width: 100%" class="btn btn-info">Product details</a>
-            </div>   
-        </div>
+<div class="row">
+<% @products.in_groups_of(3) do |group| %>
+  <% group.each do |product| %>
+    <div class="col-md">
+      <div class="card">
+          <% if product.img_url %>
+            <a href="<%= product_path(product) %>">
+              <img class="card-img-top img-thumbnail"
+                  style="height: 15rem"
+                  src="<%= product.img_url %>"
+                  alt="<%= product.name %>">
+            </a>
+          <%end%>
+          <div class="card-body text-center">
+            <h5 class="card-title"><%= product.name %></h5>
+            <a href="<%= product_path(product) %>" class="btn btn-primary">
+              View product
+            </a>
+          </div>   
       </div>
-    <% end %>
     </div>
-  </div>
+  <% end %>
+  <div class="w-100"></div><br>
+<% end %>
+</div>
 </div>

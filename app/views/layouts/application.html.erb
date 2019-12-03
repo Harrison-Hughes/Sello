@@ -10,14 +10,33 @@
           crossorigin="anonymous">
   </head>
 <body>
-<nav>
 
+<nav class="navbar navbar-dark bg-primary justify-content-between">
+  <a class="navbar-brand" href="/">SELLO</a>
+  <ul class="navbar-nav">
+      <% unless session[:user_id] %>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            Log In
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            Sign Up
+          </a>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            Log Out
+          </a>
+        </li>
+      <% end %>
+    </ul>
 </nav>
+
 <div class="wrapper">
-<div class="p-3 mb-3 bg-info text-white">SELLO
 
-
-</div>
 
 <div class="container">
   <br>
