@@ -4,6 +4,7 @@ class User < ApplicationRecord
     has_many :products, through: :orders
     has_many :basket_joins
 
+    validates :email, uniqueness: true
     has_secure_password
 
     def products

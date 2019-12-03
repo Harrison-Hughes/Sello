@@ -2,4 +2,6 @@
 <p>By <%=@product.seller_name%></p><br>
 <%= @product.description %>
 <%= @product.price %>
+<%if !@product.img_url%>
 <%= @product.img_url %>
+<%end%>
