@@ -2,6 +2,11 @@
 <p>By <%=@product.seller_name%></p><br>
 <%= @product.description %>
 <%= @product.price %>
-<%if !@product.img_url%>
-<%= @product.img_url %>
-<%end%>
+<% if @product.img_url %>
+    <a>
+    <img class="card-img-top img-thumbnail"
+    src="<%= @product.img_url %>"
+    alt="<%= @product.name %>"
+    alt="Image" height = "10" width = "10">
+    </a>
+<% end %>

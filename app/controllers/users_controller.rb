@@ -32,7 +32,7 @@ class UsersController < ApplicationController
       @user.update(user_params)
       redirect_to user_path(@user)
     else 
-      flash[:error] = "Sorry, some of the details don't match. Please try again"
+      flash[:notice] = "Sorry, some of the details don't match. Please try again"
       render :edit
     end
 

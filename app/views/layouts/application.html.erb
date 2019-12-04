@@ -8,28 +8,74 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
           crossorigin="anonymous">
+
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+</style>
+
   </head>
 <body>
 
 <nav class="navbar navbar-dark bg-info justify-content-between">
   <a class="navbar-brand" href="/">SELLO</a>
-  <a class="nav-item" href="/users/<%= session[:user_id]%>">Account</a>
   <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-light nav-link" type="submit">Search</button>
     </form>
+
+    <div class="dropdown" style="float:right;">
+        <button class="btn btn-outline-light nav-link" type="submit">Menu</button>
+        <div class="dropdown-content">
+            <% unless !session[:user_id] %>
+            <a class="nav-item" href="/products/new">Sell Product</a>
+            <% end %>
+            <a class="nav-item" href="/users/<%= session[:user_id]%>">Account</a>
+          <a href="#">Link 3</a>
+        </div>
+      </div>
+
   <ul class="navbar-nav">
       <% unless session[:user_id] %>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="/login">
             Log In
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            Sign Up
-          </a>
-        </li>
+
       <% else %>
         <li class="nav-item">
           <form class="form-inline" method="POST" action="/sessions">
@@ -39,6 +85,7 @@
             </button>
           </form>
         </li>
+        
       <% end %>
     </ul>
 </nav>
