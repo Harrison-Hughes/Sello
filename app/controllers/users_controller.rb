@@ -23,9 +23,19 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
+    @user = User.find(params[:id])
+    if @user && @user.authenticate(params[:user][:old_password]) && params[:user][:password] == params[:user][:new_password_confirm]
+      @user.update(user_params)
+      redirect_to user_path(@user)
+    else 
+      flash[:error] = "Sorry, some of the details don't match. Please try again"
+      render :edit
+    end
+
   end
 
   def destroy
