@@ -1,11 +1,17 @@
 <h1>Change Password</h1>
-<p><%= flash[:error] %></p>
+
+<p style="color:red"><%= flash[:notice]%></p>
+
 <%= form_for @user do |f| %> 
+
 <%= f.label "Old Password" %> <br>
 <%= f.password_field :old_password %> <br>
+
 <%= f.label "New Password" %> <br>
 <%= f.password_field :password %> <br>
+
 <%= f.label "Confirm New Password" %> <br>
 <%= f.password_field :new_password_confirm %> <br> <br>
+
 <%= f.submit "Change Password"%>
 <% end %>
