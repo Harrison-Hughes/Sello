@@ -1,11 +1,8 @@
-<h1>Account</h1>
-
-<h4>Name: <%= @user.name %></h4>
-<h4>Email: <%= @user.email %></h4>
+<h2>Welcome! <%= @user.name.capitalize %> </h2>
+<h4>Account details <%= @user.email %></h4>
 <h5><%= link_to  "Change Password", edit_user_path %></h5> <br>
 
-
-<h2>My Items:</h2>
+<h2>My Orders:<%= link_to orders_path %></h2>
 
 <% @user.products.each do |product|%>
 <li>
