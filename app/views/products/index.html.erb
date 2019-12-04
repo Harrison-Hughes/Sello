@@ -6,6 +6,7 @@
 <% @products.in_groups_of(3, false) do |group| %>
   <% group.each do |product| %>
     <div class="col-md">
+        <% if product %>
       <div class="card">
           <% if product.img_url %>
             <a href="<%= product_path(product) %>">
@@ -23,6 +24,7 @@
           </div>   
       </div>
     </div>
+  <% end %>
   <% end %>
   <div class="w-100"></div><br>
 <% end %>
