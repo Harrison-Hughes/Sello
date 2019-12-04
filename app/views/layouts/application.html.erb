@@ -51,7 +51,8 @@
 <body>
 
 <nav class="navbar navbar-dark bg-info justify-content-between">
-  <a class="navbar-brand" href="/">SELLO</a>
+  <a class="navbar-brand" href="/">Welcome to SELLO!</a>
+  <a class="btn btn-outline nav-link" href="/users/<%= session[:user_id]%>">Account</a>
   <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-light nav-link" type="submit">Search</button>
