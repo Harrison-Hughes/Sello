@@ -27,4 +27,8 @@ class Order < ApplicationRecord
         
     end
 
+    def total_cost_formatted
+        "%.2f" % self.total_cost
+    end
+
 end
