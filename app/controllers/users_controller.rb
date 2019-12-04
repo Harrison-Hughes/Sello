@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     if @user.valid?
       redirect_to user_path(@user)
+      session[:user_id] = @user.id
     else
       flash[:errors] = @user.errors.full_messages
       redirect_to new_user_path 
@@ -32,7 +33,7 @@ class UsersController < ApplicationController
       @user.update(user_params)
       redirect_to user_path(@user)
     else 
-      flash[:error] = "Sorry, some of the details don't match. Please try again"
+      flash[:notice] = "Sorry, some of the details don't match. Please try again"
       render :edit
     end
 
