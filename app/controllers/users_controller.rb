@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     if @user.valid?
       redirect_to user_path(@user)
+      session[:user_id] = @user.id
     else
       flash[:errors] = @user.errors.full_messages
       redirect_to new_user_path 

@@ -62,8 +62,8 @@
         <div class="dropdown-content">
             <% unless !session[:user_id] %>
             <a class="nav-item" href="/products/new">Sell Product</a>
-            <% end %>
             <a class="nav-item" href="/users/<%= session[:user_id]%>">Account</a>
+            <% end %>
           <a href="#">Link 3</a>
         </div>
       </div>
