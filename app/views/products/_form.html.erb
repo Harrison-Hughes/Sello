@@ -3,7 +3,6 @@
 <%= error %>
 <% end %>
 <% end %>
-
 <div class="row">
   <div class="col-md-4">
 
@@ -37,11 +36,10 @@
         <label for="tag">
         <%= f.collection_select :tag_ids, Tag.all, :id, :name, :class => "btn btn-danger dropdown-toggle"%>
       </div>
-
+      
       <br>
 
       <%= f.submit :class => 'btn btn-success' %>
-
     <% end %>
 
   </div>
