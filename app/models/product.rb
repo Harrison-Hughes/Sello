@@ -26,4 +26,9 @@ class Product < ApplicationRecord
   def seller_name
     User.find(self.user_id).name
   end
+
+  def price_formatted
+    "%.2f" % self.price
+  end
+
 end
