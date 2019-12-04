@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update]
-  before_action :authorize_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authorize_user, only: [:new, :create, :edit, :update, :destroy, :basket, :checkout]
 
   def index
     @products = Product.all
@@ -8,6 +8,26 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+  end
+
+  def basket
+    @user = User.find(params[:id])
+    @basket = @user.basket
+  end
+
+  def checkout
+    @user = User.find(params[:id])
+    @basket = @user.basket
+  end
+
+  def place_order
+    @user = User.find(params[:id])
+    if params[:address].length > 0
+      @user.checkout_basket(params[:address])
+      redirect_to orders_path
+    else flash[:notice] = "Must enter an address!"
+      render :checkout
+    end
   end
 
   def show

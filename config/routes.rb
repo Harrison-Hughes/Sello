@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   delete "/sessions", to: "sessions#destroy"
   resources :products
   resources :users, except: %i[index]
-
-  resources :orders
+  get'/users/:id/basket', to: 'products#basket', as: "basket"
+  get'/users/:id/checkout', to: 'products#checkout', as: "checkout"
+  post'/users/:id/checkout', to: 'products#place_order', as: "place_order"
+  get'/users/:id/orders', to: 'orders#past_orders', as: 'orders'
+  resources :orders, only: [:show]
 end
