@@ -24,7 +24,6 @@ buyer_user2 = User.create(
   password_digest: "password2",
 )
 
-
 earrings = Product.create(
   name: "#{Faker::Hipster.word.capitalize} Earrings",
   description: Faker::Hipster.sentence,
