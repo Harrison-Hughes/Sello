@@ -20,6 +20,10 @@
     <h5>Price</h5>
     <p>£<%= @product.price_formatted %></p>
 
+    <p>
+     Tag <span class="badge badge-info"><%=@product.tag_name%></span>
+    </p>
+
     <%= form_for @order do |f| %>
       <%= f.hidden_field "product_id", value: @product.id %>
       <%= f.submit "Instant Order", :class => "btn btn-success btn-lg" %>
