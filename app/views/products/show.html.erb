@@ -31,15 +31,20 @@
       </div>
     </div>
 
-    <section>
-      <a href="<%= basket_path %>">
-        Basket: 
-        <span class="badge badge-light">
-          <%= @no_in_basket %>
-        </span>
-        items
-      </a>
-    </section>
+   <div class="row">
+     <div class="col">
+      <h5>
+          Basket: 
+          <span class="badge badge-light">
+            <%= @no_in_basket %>
+          </span>
+          items
+      </h5>
+      </div>
+      <div class="co">
+       <%= link_to 'View Basket', basket_path %>
+       </div>
+    </div>
 
     <hr>
 
