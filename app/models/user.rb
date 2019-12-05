@@ -31,7 +31,7 @@ class User < ApplicationRecord
         product_id = product_id.to_i
         max_q = self.max_quantity(product_id)
         product = Product.find(product_id)
-        byebug
+        #byebug
         if quantity <= max_q
             if self.basket.any? {|item| item[:product_id]==product_id.to_i}
                 join = BasketJoin.find_by(user_id: self.id, product_id: product_id)

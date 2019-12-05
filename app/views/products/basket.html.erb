@@ -1,4 +1,5 @@
 <h1>your basket</h1><br>
+<p><%=flash[:notice]%></p>
 <%@basket.each do |item|%>
     <%product = Product.find(item[:product_id])%>
     <h4><%=link_to product.name, product_path(product.id)%></h4>
