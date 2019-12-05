@@ -13,9 +13,18 @@
 <%= form_for @user do |f| %>
 <%= f.label "Name" %><br>
 <%= f.text_field :name %><br>
+
 <%= f.label "Email" %><br>
 <%= f.text_field :email %><br>
+
 <%= f.label "Password" %><br>
-<%= f.password_field :password %><br> <br>
+<%= f.password_field :password %><br> 
+
+<%= f.label "Security Question" %><br>
+<%= select_tag "security_question", options_for_select(["Date of Birth", "First Pet's Name", "Favourite Fruit", "Best Friend's Name"]) %> <br>
+
+<%= f.label "Security Question Answer" %><br>
+<%= f.text_field :security_answer %><br> <br>
+
 <%= f.submit "Sign Up" %>
 <% end %>
