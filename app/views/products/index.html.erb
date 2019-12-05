@@ -6,7 +6,7 @@
 <% @products.in_groups_of(3, false) do |group| %>
   <% group.each do |product| %>
     <div class="col-md">
-        <% if product %>
+        <% if product %> 
       <div class="card">
           <% if product.img_url %>
             <a href="<%= product_path(product) %>">
@@ -18,6 +18,7 @@
           <% end %>
           <div class="card-body text-center">
             <h5 class="card-title"><%= product.name %></h5>
+            <h4 class="card-body"><%= product.price %></h5>
             <a href="<%= product_path(product) %>" class="btn btn-primary">
               View product
             </a>
