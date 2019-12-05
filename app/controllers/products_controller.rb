@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
       @user.checkout_basket(params[:address])
       redirect_to orders_path
     else flash[:notice] = "Must enter an address!"
-      render :checkout
+      redirect_to checkout_path
     end
   end
 
