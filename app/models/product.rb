@@ -8,6 +8,18 @@ class Product < ApplicationRecord
   has_many :order_product_joins
   has_many :orders, through: :order_product_joins
 
+  validates :price, :stock_count, :img_url, presence: true
+
+  validates :name, {
+    presence: true,
+    length: { in: 2..15 },
+  }
+
+  validates :description, {
+    presence: true,
+    length: { in: 3..50 },
+  }
+
   def add_tag_by_id(tag_id)
     if !ProductTag.find_by(product_id: self.id, tag_id: tag_id)
       ProductTag.create(product_id: self.id, tag_id: tag_id)
