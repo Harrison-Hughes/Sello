@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
 
   def create
     unless session[:user_id]
-      redirect_to new_user_path
+      redirect_to new_session
     end
     
     product = Product.find(params[:order][:product_id])
@@ -34,7 +34,7 @@ class OrdersController < ApplicationController
       status: "NEW",
       total_cost: product.price,
     )
-    
+
     order_item = OrderProductJoin.create(
       order_id: order.id,
       product_id: product.id,
