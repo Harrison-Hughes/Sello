@@ -1,8 +1,11 @@
 <% if @product.errors.any? %>
-<% @product.errors.full_messages.each do |error| %>
-<%= error %>
+  <% @product.errors.full_messages.each do |error| %>
+     <li style="color:red">
+           <%= error %>
+       </li>
+  <% end %>
 <% end %>
-<% end %>
+
 <div class="row">
   <div class="col-md-4">
 
