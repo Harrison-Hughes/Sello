@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191203142400) do
+ActiveRecord::Schema.define(version: 20191204160347) do
 
   create_table "basket_joins", force: :cascade do |t|
     t.integer "user_id"
@@ -64,8 +64,10 @@ ActiveRecord::Schema.define(version: 20191203142400) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "security_question"
+    t.string   "security_answer"
   end
 
 end

@@ -36,14 +36,46 @@ class UsersController < ApplicationController
     end
   end
 
+  def account_check
+  end
+
+  def forgot_password
+    @user = User.find_by(email: params[:email])
+    if @user 
+      render :retrieve_password
+    else 
+      flash[:notice] = "Sorry, there is no account with that email"
+      render :forgot_password
+    end
+  end
+
+  def retrieve_password
+    @user = User.find_by(email: params[:email])
+    if @user.security_answer && params[:security_answer]
+      render :password
+    end
+  end
+
+  def password
+    @user = User.find_by(email: params[:email])
+    if @user 
+      @user.update(user_params)
+      flash[:message] = "Password has been successfully reset"
+      render :password
+    else 
+      flash[:notice] = "Sorry, some of the details don't match. Please try again"
+      render :password
+    end
+  end
+
   def destroy
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password)
-  end
+    params.require(:user).permit(:name, :email, :password, :security_question, :security_answer)
+  end 
 
   def find_user
     @user = User.find(params[:id])
