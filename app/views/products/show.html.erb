@@ -20,24 +20,35 @@
     <p>
      Tag <span class="badge badge-info"><%=@product.tag_name%></span>
     </p>
+    <div class="row">
+      <div class="col">
+        <h5>Price</h5>
+        <p>£<%= @product.price_formatted %></p>
+      </div>
+      <div class="col">
+        <h5>Stock</h5>
+        <p><%= @product.stock_count %></p>
+      </div>
+    </div>
 
-    <h5>Price</h5>
-    <p>£<%= @product.price_formatted %></p>
-  
-    <button type="button" class="btn btn-primary">
-    Basket <span class="badge badge-light">
-     <%=@no_in_basket%>
-     </span>
-    </button>
+    <section>
+      <a href="<%= basket_path %>">
+        Basket: 
+        <span class="badge badge-light">
+          <%= @no_in_basket %>
+        </span>
+        items
+      </a>
+    </section>
 
+    <hr>
 
-   <br>
-   <% if @user %>
-    <%= form_tag add_to_basket_path do %>
-      <%= hidden_field_tag 'product_id', @product.id%>
-      <%= submit_tag "Add to basket", :class => "btn btn-success btn-lg" %>
-    <% end %>
-    <%else%>
+    <% if @user %>
+      <%= form_tag add_to_basket_path do %>
+        <%= hidden_field_tag 'product_id', @product.id%>
+        <%= submit_tag "Add to basket", :class => "btn btn-success btn-lg" %>
+      <% end %>
+    <% else %>
     
     <%= form_tag('/login', method: :get) do %>
     <%= submit_tag "Add to basket", :class => "btn btn-success btn-lg" %>
@@ -45,6 +56,5 @@
 
     <% end %>
   <br>
-   <button type="button" class="btn btn-success"> <%= link_to "Checkout", basket_path %> </button>
   </div>
 </div>

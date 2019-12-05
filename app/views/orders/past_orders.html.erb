@@ -1,8 +1,17 @@
-<h1>Orders</h1>
-<%@orders.each do |order|%>
-    <%=link_to "order details", order_path(order.id)%><br>
-    Order address: <%=order.address%><br>
-    Order total: £<%="%.2f" % (order.total_cost)%><br>
-    With shipping: £<%="%.2f" % (order.total_cost + 5)%><br>
-    Date: <%=order.created_at.to_date%><br><br>
-<%end%>
+<h1>Here is the cool stuff you've bought:</h1>
+
+<hr>
+
+<div class="row">
+    <% @orders.each do |order|%>
+        <div class="col-md-5">
+            <h3>
+              <%= link_to "Order No. #{order.id * 10000}", order_path(order.id) %>
+            </h3>
+            <p>Shipping to: <%= order.address.capitalize %></p>
+            <p>Order total: £<%= "%.2f" % (order.total_cost) %></p>
+            <p>With shipping: £<%= "%.2f" % (order.total_cost + 5) %></p>
+            <p>Order Date: <%= order.created_at.to_date %></p>
+        </div>
+    <% end %>
+</div>
