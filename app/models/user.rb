@@ -44,6 +44,7 @@ class User < ApplicationRecord
         end
         self.basket
     end
+    
   def products_by_name
     self.products.map(&:name)
   end
