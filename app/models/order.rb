@@ -23,8 +23,8 @@ class Order < ApplicationRecord
         order
     end
 
-    def product_details 
-        
+    def order_details
+        order_details = OrderProductJoin.where(order_id: self.id)
     end
 
 end

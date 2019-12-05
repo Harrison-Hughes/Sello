@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   get'/users/:id/checkout', to: 'products#checkout', as: "checkout"
   post'/users/:id/checkout', to: 'products#place_order', as: "place_order"
   get'/users/:id/orders', to: 'orders#past_orders', as: 'orders'
-  resources :orders, only: [:show]
+  get'/users/:id/orders/:order_id', to: 'orders#order_details', as: 'order'
 end

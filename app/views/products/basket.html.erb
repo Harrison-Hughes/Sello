@@ -1,0 +1,10 @@
+<h1>your basket</h1><br>
+<%@basket.each do |item|%>
+    <%product = Product.find(item[:product_id])%>
+    <h4><%=product.name%></h4><br>
+    <%=product.description%><br>
+    <b>price: £<%=product.price%></b><br>
+    <b>quantity: <%=item[:quantity]%></b><br><br>
+<%end%>
+
+<h4><%= link_to "checkout", checkout_path%>
