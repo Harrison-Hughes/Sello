@@ -29,17 +29,18 @@ class User < ApplicationRecord
     end
 
     def add_to_basket(product_id, quantity=1)
-        max_quantity = self.max_quantity(product_id)
+        
+        max_q = self.max_quantity(product_id)
         product = Product.find(product_id)
-        if quantity <= max_quantity
-            if self.basket.any? {|item| item[:product_id]==product_id}
+        if quantity <= max_q
+            if self.basket.any? {|item| item[:product_id]==product_id.to_i}
                 join = BasketJoin.find_by(user_id: self.id, product_id: product_id)
                 new_quantity = join.quantity + quantity
                 join.update(quantity: new_quantity)
             else 
                 BasketJoin.create(user_id: self.id, product_id: product_id, quantity: quantity)
             end
-        else puts "Error: your request for this item exceeds the stock. The maximum (additional) quantity you can request is #{max_quantity}"
+        else puts "Error: your request for this item exceeds the stock. The maximum (additional) quantity you can request is #{max_q}"
         end
         self.basket
     end
@@ -50,6 +51,7 @@ class User < ApplicationRecord
     end
 
     def max_quantity(product_id) #the max of this item that the user can add to their basket
+        #byebug
         product_stock = Product.find(product_id).stock_count
         if self.basket.any? {|item| item[:product_id]==product_id}
             join = BasketJoin.find_by(user_id: self.id, product_id: product_id)
@@ -69,6 +71,13 @@ class User < ApplicationRecord
             total += quantity * product_price
         end
         total.to_s.to_f
+    end
+
+    def number_in_basket(product_id)
+        if self.basket.any? {|item|item[:product_id]==product_id.to_i}
+          quantity = self.basket.select{|item|item[:product_id]==product_id.to_i}[0][:quantity]
+        else 0
+        end
     end
 
 end

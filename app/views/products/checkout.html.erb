@@ -4,12 +4,12 @@
 <%@basket.each do |item|%>
     <%product = Product.find(item[:product_id])%>
     <h5><%=product.name%></h5><br>
-    <b>price: £<%=product.price%></b><br>
+    <b>price: £<%=product.price_formatted%></b><br>
     <b>quantity: <%=item[:quantity]%></b><br>
-    <b>subtotal: <%=product.price * item[:quantity]%></b><br><br>
+    <b>subtotal: £<%="%.2f" % (product.price * item[:quantity])%></b><br><br>
 <%end%>
-<b>shipping cost: £<%=5.00%>
-<h4>Total: £<%=@user.basket_total + 5%></h4><br>
+<b>shipping cost: £<%="%.2f" % 5.00%>
+<h4>Total: £<%="%.2f" % (@user.basket_total + 5)%></h4><br>
 
 <%= form_tag checkout_path do %>
     <label>Address:</label>

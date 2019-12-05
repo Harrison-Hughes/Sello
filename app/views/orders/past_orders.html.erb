@@ -2,7 +2,7 @@
 <%@orders.each do |order|%>
     <%=link_to "order details", order_path(order.id)%><br>
     Order address: <%=order.address%><br>
-    Order total: <%=order.total_cost%><br>
-    With shipping: <%=order.total_cost + 5%><br>
-    Date: <%=order.created_at.to_date%>
+    Order total: £<%="%.2f" % (order.total_cost)%><br>
+    With shipping: £<%="%.2f" % (order.total_cost + 5)%><br>
+    Date: <%=order.created_at.to_date%><br><br>
 <%end%>

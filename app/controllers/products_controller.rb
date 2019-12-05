@@ -12,17 +12,17 @@ class ProductsController < ApplicationController
   end
 
   def basket
-    @user = User.find(params[:id])
+    @user = current_user
     @basket = @user.basket
   end
 
   def checkout
-    @user = User.find(params[:id])
+    @user = current_user
     @basket = @user.basket
   end
 
   def place_order
-    @user = User.find(params[:id])
+    @user = current_user
     if params[:address].length > 0
       @user.checkout_basket(params[:address])
       redirect_to orders_path
@@ -32,8 +32,18 @@ class ProductsController < ApplicationController
   end
 
   def show
+    flash.now[:notice] = "Hello current action"
+    @user = current_user
     @product = Product.find(params[:id])
-    @order = Order.new
+    @no_in_basket = @user.number_in_basket(params[:id])
+  end
+
+  def add_to_basket
+    product_id = params[:product_id]
+    user = current_user
+    user.add_to_basket(product_id)
+    flash.now[:notice] = "Hello current action"
+    redirect_to product_path(product_id)
   end
 
   def create
