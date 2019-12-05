@@ -1,0 +1,10 @@
+<%=@user.name%><br>
+Address: <%=@order.address%><br>
+<%=@order_details.each do |product|%>
+    <h3><%=product.product_name%><br></h3>
+    £<%=product.purchase_price%><br>
+    <%=product.product_description%><br>
+    quantity: <%=product.quantity%><br>
+<%end%>
+<br>
+<%=link_to 'back to past orders', orders_path%>
