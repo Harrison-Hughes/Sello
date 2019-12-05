@@ -46,12 +46,27 @@
     <% if @user %>
       <%= form_tag add_to_basket_path do %>
         <%= hidden_field_tag 'product_id', @product.id%>
-        <%= submit_tag "Add to basket", :class => "btn btn-success btn-lg" %>
+        <% unless @product.user_id == @user.id %>
+          <% if @product.stock_count > 0 %>
+            <%= submit_tag "Add to basket", :class => "btn btn-success btn-lg" %>
+          <% else %>
+            <%= submit_tag "Add to basket",
+              :class => "btn btn-success btn-lg",
+              :disabled => true,
+              :title => "Out of stock!"
+            %>
+          <% end %>
+        <% else %>
+          <%= submit_tag "Add to basket",
+              :class => "btn btn-success btn-lg",
+              :disabled => true,
+              :title => "You can't buy your own product!"
+            %>
+        <% end %>
       <% end %>
     <% else %>
-    
-    <%= form_tag('/login', method: :get) do %>
-    <%= submit_tag "Add to basket", :class => "btn btn-success btn-lg" %>
+      <%= form_tag('/login', method: :get) do %>
+      <%= submit_tag "Add to basket", :class => "btn btn-success btn-lg" %>
    <% end %>
 
     <% end %>

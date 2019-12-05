@@ -60,9 +60,10 @@
   <div class="dropdown">
     <button class="btn btn-outline-light nav-link" type="submit">Menu</button>
     <div class="dropdown-content">
-        <% unless !session[:user_id] %>
-        <a class="nav-item" href="/products/new">Sell Product</a>
-        <a class="nav-item" href="/users/<%= session[:user_id]%>">Account</a>
+        <% if session[:user_id] %>
+          <a class="nav-item" href="/products/new">Sell Product</a>
+          <a class="nav-item" href="/users/<%= session[:user_id]%>">Account</a>
+          <a class="nav-item" href="/orders">Orders</a>
         <% end %>
         <a class="nav-item" href="/">Homepage</a>
     </div>

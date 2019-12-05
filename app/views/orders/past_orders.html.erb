@@ -1,4 +1,10 @@
-<h1>Here is the cool stuff you've bought:</h1>
+<% if @orders.count > 0 %>
+  <h1>Here is the cool stuff you've bought:</h1>
+<% else %>
+  <h1>It seems that you haven't bought anything yet.</h1>
+  <p>Your orders will display here when you buy something.</p>
+  <h3><%= link_to "Buy Now", products_path %></h3>
+<% end %>
 
 <hr>
 
