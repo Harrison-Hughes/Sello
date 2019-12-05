@@ -51,43 +51,43 @@
 <body>
 
 <nav class="navbar navbar-dark bg-info justify-content-between">
-  <a class="navbar-brand" href="/">Ka-Qing</a>
+  <a class="navbar-brand" href="/">SELLO</a>
   <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-light nav-link" type="submit">Search</button>
-    </form>
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-light nav-link" type="submit">Search</button>
+  </form>
 
-    <div class="dropdown" style="float:right;">
-        <button class="btn btn-outline-light nav-link" type="submit">Menu</button>
-        <div class="dropdown-content">
-            <% unless !session[:user_id] %>
-            <a class="nav-item" href="/products/new">Sell Product</a>
-            <a class="nav-item" href="/users/<%= session[:user_id]%>">Account</a>
-            <% end %>
-            <a class="nav-item" href="/">Homepage</a>
-        </div>
-      </div>
+  <div class="dropdown">
+    <button class="btn btn-outline-light nav-link" type="submit">Menu</button>
+    <div class="dropdown-content">
+        <% unless !session[:user_id] %>
+        <a class="nav-item" href="/products/new">Sell Product</a>
+        <a class="nav-item" href="/users/<%= session[:user_id]%>">Account</a>
+        <% end %>
+        <a class="nav-item" href="/">Homepage</a>
+    </div>
+  </div>
 
   <ul class="navbar-nav">
-      <% unless session[:user_id] %>
-        <li class="nav-item">
-          <a class="nav-link" href="/login">
-            Log In
-          </a>
-        </li>
+    <% unless session[:user_id] %>
+      <li class="nav-item">
+        <a class="nav-link" href="/login">
+          Log In
+        </a>
+      </li>
 
-      <% else %>
-        <li class="nav-item">
-          <form class="form-inline" method="POST" action="/sessions">
-            <input name="_method" type="hidden" value="delete">
-            <button type="submit" class="btn btn-outline nav-link">
-              Log Out
-            </button>
-          </form>
-        </li>
-        
-      <% end %>
-    </ul>
+    <% else %>
+      <li class="nav-item">
+        <form class="form-inline" method="POST" action="/sessions">
+          <input name="_method" type="hidden" value="delete">
+          <button type="submit" class="btn btn-outline nav-link">
+            Log Out
+          </button>
+        </form>
+      </li>
+      
+    <% end %>
+  </ul>
 </nav>
 
 <div class="wrapper">
