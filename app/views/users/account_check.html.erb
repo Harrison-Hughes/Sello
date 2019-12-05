@@ -1,0 +1,14 @@
+<h1>Forgot Password</h1>
+
+<%if flash[:notice]%>
+
+<p style="color:red"> <%= flash[:notice] %> </p>
+
+<%end%>
+
+<%= form_tag('/forgot_password', method: :post) do %>
+  <%= label_tag(:email, "Please input the email associated with your account:") %> <br>
+  <%= text_field_tag(:email) %> <br> <br>
+  <div><%= submit_tag 'Retrieve Password' %></div>
+<% end -%>
+

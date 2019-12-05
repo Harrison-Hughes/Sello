@@ -1,20 +1,30 @@
 class Product < ApplicationRecord
-  
-    belongs_to :user
-    has_many :product_tags
-    has_many :tags, through: :product_tags
-    has_many :orders
-    has_many :users, through: :orders
-    has_many :basket_joins
-    has_many :order_product_joins
-    has_many :orders, through: :order_product_joins
+  belongs_to :user
+  has_many :product_tags
+  has_many :tags, through: :product_tags
+  has_many :orders
+  has_many :users, through: :orders
+  has_many :basket_joins
+  has_many :order_product_joins
+  has_many :orders, through: :order_product_joins
 
-    def add_tag_by_id(tag_id)
-      if !ProductTag.find_by(product_id: self.id, tag_id: tag_id)
-        ProductTag.create(product_id: self.id, tag_id: tag_id)
-      else puts "tag already associated with product"
-      end
-    end
+  validates :price, :stock_count, :img_url, presence: true
+
+  validates :name, {
+    presence: true,
+    length: { in: 2..15 },
+  }
+
+  validates :description, {
+    presence: true,
+    length: { in: 3..50 },
+  }
+
+  def add_tag_by_id(tag_id)
+    if !ProductTag.find_by(product_id: self.id, tag_id: tag_id)
+      ProductTag.create(product_id: self.id, tag_id: tag_id)
+    else puts "tag already associated with product"     end
+  end
 
   def remove_tag_by_id(tag_id)
     if ProductTag.find_by(product_id: self.id, tag_id: tag_id)
@@ -31,4 +41,7 @@ class Product < ApplicationRecord
     "%.2f" % self.price
   end
 
+  def tag_name
+    ProductTag.find(self.id).tag.name
+  end
 end
