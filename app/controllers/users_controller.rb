@@ -45,13 +45,17 @@ class UsersController < ApplicationController
       render :retrieve_password
     else 
       flash[:notice] = "Sorry, there is no account with that email"
-      render :forgot_password
+      render :retrieve_password
     end
   end
 
   def retrieve_password
     @user = User.find_by(email: params[:email])
-    if @user.security_answer && params[:security_answer]
+    if @user == nil || params[:security_answer] == ""
+      flash[:notice] = "Sorry, your input was incorrect"
+      render :retrieve_password
+    else
+      @user.security_answer && params[:security_answer]
       render :password
     end
   end

@@ -27,15 +27,16 @@
         <%= f.number_field :stock_count, :class => 'form-control' %>
       </div>
 
+      <div class="form-group"> <br>
+          <label for="tag">Product Tag</label> <br>
+          <%= f.collection_select :tag_ids, Tag.all, :id, :name, :class => "btn btn-danger dropdown-toggle" %>
+      </div>
+
       <div class="form-group">
         <label for="img_url">Product Image</label>
         <%= f.url_field :img_url, :class => 'form-control' %>
       </div>
       
-      <div class="dropdown-menu">
-        <label for="tag">
-        <%= f.collection_select :tag_ids, Tag.all, :id, :name, :class => "btn btn-danger dropdown-toggle"%>
-      </div>
       
       <br>
 

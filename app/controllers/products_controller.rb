@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.user = current_user
     if @product.save
+      ProductTag.create(product_id: @product.id, tag_id: params[:tag_ids])
       redirect_to product_path(@product)
     else
       render :new
