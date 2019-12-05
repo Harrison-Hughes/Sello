@@ -6,6 +6,10 @@
     <%=product.description%><br>
     <b>price: £<%=product.price_formatted%></b><br>
     <b>quantity: <%=item[:quantity]%></b><br><br>
-<%end%>
+<% end %>
 
-<%= link_to "Checkout", checkout_path, :class => "btn btn-success btn-lg" %>
+ <%= link_to "Checkout", checkout_path, :class => "btn btn-success btn-lg" %>
+ <br>
+ <br>
+<%= link_to "Continue Shopping", products_path, :class => "btn btn-secondary btn-sm" %>
+ 
