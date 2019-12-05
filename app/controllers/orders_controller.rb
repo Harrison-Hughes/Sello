@@ -1,7 +1,6 @@
 class OrdersController < ApplicationController
 
     def past_orders
-        #byebug
         @user = current_user
         @orders = @user.past_orders
     end
