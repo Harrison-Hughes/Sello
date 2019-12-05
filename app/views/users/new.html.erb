@@ -6,25 +6,39 @@
        <li style="color:red">
            <%= error %>
        </li>
-    <%end%>
+    <% end %>
 </p>
 <%end%>
 
-<%= form_for @user do |f| %>
-<%= f.label "Name" %><br>
-<%= f.text_field :name %><br>
+<div class='row'> 
+  <div class="col-md-5">
+    <%= form_for @user do |f| %>
+    <div class="form-group">
+        <%= f.label "Name" %>
+        <%= f.text_field :name, :class => "form-control"%><br>
+    </div>
 
-<%= f.label "Email" %><br>
-<%= f.text_field :email %><br>
-
-<%= f.label "Password" %><br>
-<%= f.password_field :password %><br> 
-
-<%= f.label "Security Question" %><br>
+    <div class="form-group">
+        <%= f.label "Email" %>
+        <%= f.text_field :email, :class => "form-control" %>
+    </div>
+    
+    <div class="form-group">
+        <%= f.label "Password" %><br>
+        <%= f.password_field :password, :class => "form-control"%>
+    </div>
+    <div class="form-group">
+    <%= f.label "Security Question" %><br>
 <%= select_tag "security_question", options_for_select(["Date of Birth", "First Pet's Name", "Favourite Fruit", "Best Friend's Name"]) %> <br>
+    </div>
 
+    <div class="form-group">
 <%= f.label "Security Question Answer" %><br>
-<%= f.text_field :security_answer %><br> <br>
+<%= f.text_field :security_answer, :class => "form-control" %><br> <br>
+    </div>
 
-<%= f.submit "Sign Up" %>
-<% end %>
+    <br>
+        <%= f.submit "Sign Up", :class => 'btn btn-success' %>
+    <% end %>
+    
+</div>

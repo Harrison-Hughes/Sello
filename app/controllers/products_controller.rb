@@ -4,7 +4,6 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
-    @products_in_threes = in_groups_of_edit(@products, 3)
   end
 
   def new
@@ -12,7 +11,8 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
+    find_product
+    @order = Order.new
   end
 
   def create
@@ -37,13 +37,4 @@ class ProductsController < ApplicationController
   def find_product
     @product = Product.find(params[:id])
   end
-
-end
-
-def in_groups_of_edit(array, number)
-  rem = array.length % number
-  leftovers = array.last(rem)
-  output = array.first(array.length - rem).in_groups_of(number)
-  output << leftovers if leftovers.length > 0
-  output
 end

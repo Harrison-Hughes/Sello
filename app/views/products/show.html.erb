@@ -1,12 +1,30 @@
-<h1><%= @product.name %></h1>
-<p>By <%=@product.seller_name%></p><br>
-<%= @product.description %>
-<%= @product.price %>
-<% if @product.img_url %>
-    <a>
-    <img class="card-img-top img-thumbnail"
-    src="<%= @product.img_url %>"
-    alt="<%= @product.name %>"
-    alt="Image" height = "10" width = "10">
-    </a>
-<% end %>
+<div class="row">
+
+  <div class="col-md-7">
+    <img class="img-thumbnail"
+      src="<%= @product.img_url %>"
+      alt="<%= @product.name %>">
+  </div>
+
+  <div class="col-md-5">
+    <h1><%= @product.name %></h1>
+    <p>
+      By <span class="badge badge-info"><%=@product.seller_name%></span>
+    </p>
+    
+    <h5>Description:</h5>
+    <p>
+      <%= @product.description %>
+    </p>
+
+    <h5>Price</h5>
+    <p>£<%= @product.price_formatted %></p>
+
+    <%= form_for @order do |f| %>
+      <%= f.hidden_field "product_id", value: @product.id %>
+      <%= f.submit "Instant Order", :class => "btn btn-success btn-lg" %>
+    <% end %>
+
+  </div>
+
+</div>
