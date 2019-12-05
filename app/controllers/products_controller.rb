@@ -33,9 +33,13 @@ class ProductsController < ApplicationController
 
   def show
     flash.now[:notice] = "Hello current action"
-    @user = current_user
+    if current_user
+      @user = current_user
+    end
     @product = Product.find(params[:id])
-    @no_in_basket = @user.number_in_basket(params[:id])
+    if @user
+      @no_in_basket = @user.number_in_basket(params[:id])
+    end
   end
 
   def add_to_basket
