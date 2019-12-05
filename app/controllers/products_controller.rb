@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
+    current_user ? @user = current_user : @user = nil
   end
 
   def new
@@ -32,6 +33,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @order = Order.new
   end
 
   def create

@@ -1,6 +1,6 @@
 <h1>Orders</h1>
 <%@orders.each do |order|%>
-    <%=link_to "order details", order_path(@user.id, order.id)%><br>
+    <%=link_to "order details", order_path(order.id)%><br>
     Order address: <%=order.address%><br>
     Order total: <%=order.total_cost%><br>
     With shipping: <%=order.total_cost + 5%><br>

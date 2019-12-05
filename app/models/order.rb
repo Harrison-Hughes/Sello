@@ -27,4 +27,8 @@ class Order < ApplicationRecord
         order_details = OrderProductJoin.where(order_id: self.id)
     end
 
+    def total_cost_formatted
+        "%.2f" % self.total_cost
+    end
+
 end
