@@ -9,13 +9,26 @@
     <% end %>
 </p>
 <% end %>
+<div class='row'> 
+  <div class="col-md-5">
+    <%= form_for @user do |f| %>
+    <div class="form-group">
+        <%= f.label "Name" %>
+        <%= f.text_field :name, :class => "form-control"%><br>
+    </div>
 
-<%= form_for @user do |f| %>
-<%= f.label "Name" %><br>
-<%= f.text_field :name %><br>
-<%= f.label "Email" %><br>
-<%= f.text_field :email %><br>
-<%= f.label "Password" %><br>
-<%= f.password_field :password %><br> <br>
-<%= f.submit "Sign Up" %>
-<% end %>
+    <div class="form-group">
+        <%= f.label "Email" %>
+        <%= f.text_field :email, :class => "form-control" %>
+    </div>
+    
+    <div class="form-group">
+        <%= f.label "Password" %><br>
+        <%= f.password_field :password, :class => "form-control"%>
+    </div>
+    
+    <br>
+        <%= f.submit "Sign Up", :class => 'btn btn-success' %>
+    <% end %>
+    
+</div>
