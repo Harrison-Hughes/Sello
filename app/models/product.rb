@@ -38,7 +38,6 @@ class Product < ApplicationRecord
   end
 
   def price_formatted
-    byebug
     "%.2f" % self.price
   end
 
