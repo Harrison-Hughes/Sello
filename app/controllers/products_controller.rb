@@ -12,6 +12,7 @@ class ProductsController < ApplicationController
   end
 
   def basket
+  
     @user = current_user
     @basket = @user.basket
   end
@@ -19,6 +20,10 @@ class ProductsController < ApplicationController
   def checkout
     @user = current_user
     @basket = @user.basket
+    if @basket.empty?
+      flash[:notice] = "Basket is empty!"
+      redirect_to basket_path 
+    end
   end
 
   def place_order
