@@ -17,7 +17,7 @@ class Product < ApplicationRecord
 
   validates :description, {
     presence: true,
-    length: { in: 3..50 },
+    length: { in: 5..50 },
   }
 
   def add_tag_by_id(tag_id)
