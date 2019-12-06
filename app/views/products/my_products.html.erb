@@ -1,4 +1,10 @@
-<h1>My Products</h1>
+<% if @products.count > 0 %>
+  <h1>All My Listing</h1>
+<% else %>
+  <h1>It seems that you haven't listed any items yet!</h1>
+  <p>Your listing will display here when you listing something.</p>
+  <h3><%= link_to "Listing Now", new_product_path %></h3>
+<% end %>
 
 <div class="row">
         <% @products.in_groups_of(3) do |group| %>
