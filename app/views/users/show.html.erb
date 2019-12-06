@@ -1,15 +1,21 @@
-<h2>Welcome! <%= @user.name.capitalize %> </h2>
-<h4>Account details <%= @user.email %></h4>
-<h5><%= link_to  "Change Password", edit_user_path %></h5> <br>
-
-<h2>My Orders:<%= link_to orders_path %></h2>
+<h2>Welcome <%= @user.name.capitalize %>! </h2>
+<br>
+<div class="row">
+  <div class="col">
+    <h5>Here are your account details</h5>
+    <p>Email address: <%= @user.email %>
+    <p><%= link_to "My Orders", orders_path %></p>
+    <p><%= link_to "My Selling", my_products_path %></p>
+    <h6><%= link_to  "Edit Account", edit_user_path %></h6>
+  </div>
+</div>
 
 <% @user.products.each do |product|%>
-<li>
-<h3> <%= product.name.capitalize%> </h3> 
-<p> <%= product.description.capitalize%> </p> 
-<h6> <%= link_to  "More info", product_path(product) %> </h6>
- <br>
-</li>
+  <li>
+    <h3> <%= product.name.capitalize%> </h3> 
+    <p> <%= product.description.capitalize%> </p> 
+    <h6> <%= link_to  "More info", product_path(product) %> </h6>
+    <br>
+  </li>
 <%end%>
 
