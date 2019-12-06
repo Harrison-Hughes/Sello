@@ -17,10 +17,36 @@
       <%= @product.description %>
     </p>
 
-    <h5>Price</h5>
-    <p>£<%= @product.price_formatted %></p>
+    <p>
+     Tag <span class="badge badge-info"><%=@product.tag_name%></span>
+    </p>
+    <div class="row">
+      <div class="col">
+        <h5>Price</h5>
+        <p>£<%= @product.price_formatted %></p>
+      </div>
+      <div class="col">
+        <h5>Stock</h5>
+        <p><%= @product.stock_count %></p>
+      </div>
+    </div>
 
-    <p>In basket: <%=@no_in_basket%></p>
+   <div class="row">
+     <div class="col">
+      <h5>
+          Basket: 
+          <span class="badge badge-light">
+            <%= @no_in_basket %>
+          </span>
+          items
+      </h5>
+      </div>
+      <div class="co">
+       <%= link_to 'View Basket', basket_path %>
+       </div>
+    </div>
+
+    <p><%=flash[:notice]%></p>
 
    <% if @user %>
     <%= form_tag add_to_basket_path do %>
@@ -29,12 +55,38 @@
     <% end %>
     <%else%>
     
-    <%= form_tag('/login', method: :get) do %>
+  <%= form_tag('/login', method: :get) do %>
     <%= submit_tag "Add to basket", :class => "btn btn-success btn-lg" %>
   <% end %>
+    <hr>
 
-    <%end%>
-
-    <%= link_to "Go to basket", basket_path%>
+    <% if @user %>
+      <%= form_tag add_to_basket_path do %>
+        <%= hidden_field_tag 'product_id', @product.id%>
+        <% unless @product.user_id == @user.id %>
+          <% if @product.stock_count > 0 %>
+            <%= submit_tag "Add to basket", :class => "btn btn-success btn-lg" %>
+          <% else %>
+            <%= submit_tag "Add to basket",
+              :class => "btn btn-success btn-lg",
+              :disabled => true,
+              :title => "Out of stock!"
+            %>
+          <% end %>
+        <% else %>
+          <%= submit_tag "Add to basket",
+              :class => "btn btn-success btn-lg",
+              :disabled => true,
+              :title => "You can't buy your own product!"
+            %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <%= form_tag('/login', method: :get) do %>
+      <%= submit_tag "Add to basket", :class => "btn btn-success btn-lg" %>
+   <% end %>
+    <% end %>
+    <% end %>
+  <br>
   </div>
 </div>
