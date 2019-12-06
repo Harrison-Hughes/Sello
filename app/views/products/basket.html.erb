@@ -1,23 +1,37 @@
-<h1>Your basket</h1><br>
-<p><%=flash[:notice]%></p>
-<%@basket.each do |item|%>
-    <%product = Product.find(item[:product_id])%>
-    <h4><%=link_to product.name, product_path(product.id)%></h4>
-    <%=product.description%><br>
-    <b>price: £<%=product.price_formatted%></b><br>
-    <b>quantity: <%=item[:quantity]%></b><br>
-    <%= form_tag remove_one_from_basket_path do %>
-      <%= hidden_field_tag 'product_id', product.id%>
-      <%= submit_tag "Remove from basket" %>
-    <% end %>
-    <%= form_tag remove_all_from_basket_path do %>
-      <%= hidden_field_tag 'product_id', product.id%>
-      <%= submit_tag "Remove all from basket" %>
-    <% end %>
-    <br><br>
-<%end%>
 
- <%= link_to "Checkout", checkout_path, :class => "btn btn-success btn-lg" %>
- <br>
- <br>
-<%= link_to "Continue Shopping", products_path, :class => "btn btn-secondary btn-sm" %>
+  <h1>Your basket</h1><br>
+  <p><%=flash[:notice]%></p>
+
+
+<div class="row">
+  <div class="col-md-5">
+
+<% if @basket.size <= 0 %>
+    <p>It seems that your basket is empty</p>
+<% else %>
+    <% @basket.each do |item|%>
+    <%product = Product.find(item[:product_id])%>
+    <h4><%=link_to product.name, product_path(product.id)%>
+    </h4>
+    <p>Description: <%=product.description%></p>
+    <p>Price: £<%=product.price_formatted%></p>
+    <div class="row">
+    <p>Quantity: <%=item[:quantity]%></p>
+      <%= form_tag remove_one_from_basket_path do %>
+         <%= hidden_field_tag 'product_id', product.id%> 
+         <%= submit_tag "-", :class => "btn btn-warning btn-sm" %>
+        <% end %>
+    </div>
+       <%= form_tag remove_all_from_basket_path do %>
+         <%= hidden_field_tag 'product_id', product.id%>
+         <%= submit_tag "remove all" %>
+         <% end %>
+         <br>
+  <% end %>
+<% end %>
+          
+<%= link_to "Checkout", checkout_path, :class => "btn btn-success btn-lg" %>
+<br><br>
+<p><%= link_to "Continue Shopping", products_path, :class => "btn btn-secondary btn-sm" %></p>
+
+</div>
