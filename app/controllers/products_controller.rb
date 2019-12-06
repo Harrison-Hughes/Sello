@@ -69,6 +69,10 @@ class ProductsController < ApplicationController
   def edit
   end
 
+  def my_products
+      @products = Product.all.select {|product| product.user_id == params[:id].to_i }
+  end
+
   private
 
   def product_params

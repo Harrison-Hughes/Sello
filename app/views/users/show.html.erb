@@ -2,10 +2,10 @@
 <br>
 <div class="row">
   <div class="col">
-    <h5>Here is your account details</h5>
+    <h5>Here are your account details</h5>
     <p>Email address: <%= @user.email %>
     <p><%= link_to "My Orders", orders_path %></p>
-    <p><%= link_to "My Selling", product_path %></p>
+    <p><%= link_to "My Selling", my_products_path %></p>
     <h6><%= link_to  "Edit Account", edit_user_path %></h6>
   </div>
 </div>

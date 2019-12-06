@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   post'/orders', to: 'orders#past_orders', as: 'post_orders'
   get'/orders', to: 'orders#past_orders', as: 'orders'
   get'/orders/:order_id', to: 'orders#order_details', as: 'order'
+  get'/my_products/:id', to: 'products#my_products', as: 'my_products'
   post'/add_to_basket', to: 'products#add_to_basket', as: "add_to_basket"
 end
