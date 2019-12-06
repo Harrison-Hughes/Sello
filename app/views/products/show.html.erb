@@ -45,7 +45,6 @@
        <%= link_to 'View Basket', basket_path %>
        </div>
     </div>
-
     <hr>
 
     <% if @user %>
@@ -73,7 +72,6 @@
       <%= form_tag('/login', method: :get) do %>
       <%= submit_tag "Add to basket", :class => "btn btn-success btn-lg" %>
    <% end %>
-
     <% end %>
   <br>
   </div>
