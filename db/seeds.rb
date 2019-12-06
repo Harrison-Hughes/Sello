@@ -190,9 +190,6 @@ cow_tag = Tag.create(
 very_large_tag = Tag.create(
   name: "incredibly large"
 )
-goes_moo_tag = Tag.create(
-  name: "goes moo"
-)
 
 pin_tag = Tag.create(
   name: "pin"
@@ -202,8 +199,17 @@ shiny_tag = Tag.create(
   name: "shiny"
 )
 
-festive_tag = Tag.create(
+christmas_tag = Tag.create(
   name: "christmas-themed"
+)
+
+jewellery_tag = Tag.create(
+  name: "jewellery"
+
+)
+
+unique_tag = Tag.create(
+  name: "unique"
 )
 
 [cow1, cow2, cow3, cow4].each{|cow|cow.add_tag_by_id(cow_tag.id)}
@@ -214,7 +220,7 @@ festive_tag = Tag.create(
 #[pin1, pin3].each{|pin|pin.add_tag_by_id(shiny_tag.id)}
 #[pin1, pin2, pin3].each{|pin|pin.add_tag_by_id(handmade_tag.id)}
 
-[christmas1, christmas2, christmas3, christmas4, christmas5].each{|item|item.add_tag_by_id(festive_tag.id)}
+[christmas1, christmas2, christmas3, christmas4, christmas5].each{|item|item.add_tag_by_id(christmas_tag.id)}
 
 
 
