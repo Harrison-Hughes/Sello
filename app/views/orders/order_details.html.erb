@@ -3,8 +3,9 @@ Receiver: <%=@user.name.capitalize%><br>
 Shipping Address: <%=@order.address.capitalize%><br>
 
 <div class="row">
-  <%=@order_details.each do |product|%>
-    <div class="col-md-12">
+
+  <%@order_details.each do |product|%>
+    <div class="col-md-7">
       <h4><%= product.product_name%></h4>
       <p>
       Price £<%= product.purchase_price%>
