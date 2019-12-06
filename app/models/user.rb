@@ -98,7 +98,23 @@ class User < ApplicationRecord
 
   def remove_from_basket(product_id)
     product_id = product_id.to_i
-
+    join = self.basket.select{|j|j[:product_id]==product_id}
+    if join[0][:quantity] < 2
+        basket_join = BasketJoin.find_by(product_id: product_id, user_id: self.id)
+        basket_join.destroy
+    else num_in_basket = join[0][:quantity]
+        new_num = num_in_basket - 1
+        basket_join = BasketJoin.find_by(product_id: product_id, user_id: self.id)
+        basket_join.update(quantity: new_num)
+    end
+    self.basket
   end
 
+  def remove_all_from_basket(product_id)
+    product_id = product_id.to_i
+    join = self.basket.select{|j|j[:product_id]==product_id}
+    basket_join = BasketJoin.find_by(product_id: product_id, user_id: self.id)
+    basket_join.destroy if basket_join
+    self.basket  
+    end
 end
