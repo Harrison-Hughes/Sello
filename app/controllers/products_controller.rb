@@ -12,22 +12,9 @@ class ProductsController < ApplicationController
   end
 
   def basket
+  
     @user = current_user
     @basket = @user.basket
-  end
-
-  def remove_one_from_basket
-    user = current_user
-    product_id = params[:product_id]
-    user.remove_from_basket(product_id)
-    redirect_to basket_path
-  end
-
-  def remove_all_from_basket
-    user = current_user
-    product_id = params[:product_id]
-    user.remove_all_from_basket(product_id)
-    redirect_to basket_path
   end
 
   def checkout
@@ -45,11 +32,12 @@ class ProductsController < ApplicationController
       @user.checkout_basket(params[:address])
       redirect_to orders_path
     else flash[:notice] = "Must enter an address!"
-      redirect_to checkout_path
+      render :checkout
     end
   end
 
   def show
+    flash.now[:notice] = "Hello current action"
     if current_user
       @user = current_user
     end
@@ -62,8 +50,8 @@ class ProductsController < ApplicationController
   def add_to_basket
     product_id = params[:product_id]
     user = current_user
-    did_add = user.add_to_basket(product_id)
-    did_add ? flash[:notice] = nil : flash[:notice] = "Uh-oh - your basket currently contains the complete stock of this item! Come back again later to see if more stock becomes available."
+    user.add_to_basket(product_id)
+    flash.now[:notice] = "Hello current action"
     redirect_to product_path(product_id)
   end
 

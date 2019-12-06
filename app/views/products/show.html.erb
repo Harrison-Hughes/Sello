@@ -46,22 +46,7 @@
        </div>
     </div>
 
-<<<<<<< HEAD
-    <p><%=flash[:notice]%></p>
-
-   <% if @user %>
-    <%= form_tag add_to_basket_path do %>
-      <%= hidden_field_tag 'product_id', @product.id%>
-      <%= submit_tag "Add to basket", :class => "btn btn-success btn-lg" %>
-    <% end %>
-    <%else%>
-    
-  <%= form_tag('/login', method: :get) do %>
-    <%= submit_tag "Add to basket", :class => "btn btn-success btn-lg" %>
-  <% end %>
-=======
     <hr>
->>>>>>> 99a7b40b28836bd64dc18c65a3d839b21b387f5a
 
     <% if @user %>
       <%= form_tag add_to_basket_path do %>
