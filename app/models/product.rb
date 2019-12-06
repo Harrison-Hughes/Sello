@@ -12,12 +12,12 @@ class Product < ApplicationRecord
 
   validates :name, {
     presence: true,
-    length: { in: 2..15 },
+    length: { in: 2..40 },
   }
 
   validates :description, {
     presence: true,
-    length: { in: 5..50 },
+    length: { in: 5..500 },
   }
 
   def add_tag_by_id(tag_id)
