@@ -4,7 +4,7 @@ Shipping Address: <%=@order.address%><br>
 
 <div class="row">
 
-  <%=@order_details.each do |product|%>
+  <%@order_details.each do |product|%>
     <div class="col-md-7">
       <h4><%= product.product_name%></h4>
       
