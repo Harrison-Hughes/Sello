@@ -61,7 +61,7 @@ christmas4 = Product.create(
   img_url: "https://i.etsystatic.com/14450461/r/il/bb91c3/2087862590/il_1588xN.2087862590_twb7.jpg"
 )
 
-christmas4 = Product.create(
+christmas5 = Product.create(
   name: "Oh my christmas jumper",
   description: "Probably a Gavin and Stacey reference. (WARNING: HIGHLY FLAMMABLE. KEEP AWAY FROM CHILDREN AND PETS)",
   created_at: Time.now,
@@ -71,7 +71,7 @@ christmas4 = Product.create(
   img_url: "https://i.etsystatic.com/9052090/r/il/60d3ba/2037083086/il_794xN.2037083086_jc31.jpg"
 )
 
-christmas5 = Product.create(
+christmas6 = Product.create(
   name: "Christmas tree hat",
   description: "Do it. Look like an idiot this christmas. Buy this hat. We dare you. (WARNING: HIGHLY FLAMMABLE. KEEP AWAY FROM CHILDREN AND PETS)",
   created_at: Time.now,
@@ -212,17 +212,19 @@ unique_tag = Tag.create(
   name: "unique"
 )
 
-[cow1, cow2, cow3, cow4].each{|cow|cow.add_tag_by_id(cow_tag.id)}
+#[cow1, cow2, cow3, cow4].each{|cow|cow.add_tag_by_id(cow_tag.id)}
 #[cow1, cow3, cow4].each{|cow|cow.add_tag_by_id(very_large_tag.id)}
 #[cow1, cow2, cow3, cow4].each{|cow|cow.add_tag_by_id(goes_moo_tag.id)}
 
-[pin1, pin2, pin3, pin4, pin5].each{|pin|pin.add_tag_by_id(pin_tag.id)}
+#[pin1, pin2, pin3, pin4, pin5].each{|pin|pin.add_tag_by_id(pin_tag.id)}
 #[pin1, pin3].each{|pin|pin.add_tag_by_id(shiny_tag.id)}
 #[pin1, pin2, pin3].each{|pin|pin.add_tag_by_id(handmade_tag.id)}
 
-[christmas1, christmas2, christmas3, christmas4, christmas5].each{|item|item.add_tag_by_id(christmas_tag.id)}
+[christmas1, christmas2, christmas3, christmas4, christmas5, christmas6].each{|item|item.add_tag_by_id(christmas_tag.id)}
 
+[pin1, pin2, pin3, pin4, pin5].each{|pin|pin.add_tag_by_id(pin_tag.id)}
 
+[cow1, cow2, cow3, cow4].each{|cow|cow.add_tag_by_id(cow_tag.id)}
 
 # User.find(1)
 # User.find(2)
