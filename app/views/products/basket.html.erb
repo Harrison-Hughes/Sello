@@ -1,4 +1,4 @@
-<h1>your basket</h1><br>
+<h1>Your basket</h1><br>
 <p><%=flash[:notice]%></p>
 <%@basket.each do |item|%>
     <%product = Product.find(item[:product_id])%>
@@ -17,4 +17,8 @@
     <br><br>
 <%end%>
 
-<h4><%= link_to "checkout", checkout_path%>
+ <%= link_to "Checkout", checkout_path, :class => "btn btn-success btn-lg" %>
+ <br>
+ <br>
+<%= link_to "Continue Shopping", products_path, :class => "btn btn-secondary btn-sm" %>
+ 

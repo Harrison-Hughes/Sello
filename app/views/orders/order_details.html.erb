@@ -1,10 +1,17 @@
-<%=@user.name%><br>
-Address: <%=@order.address%><br>
-<%=@order_details.each do |product|%>
-    <h3><%=product.product_name%><br></h3>
-    £<%=product.purchase_price%><br>
-    <%=product.product_description%><br>
-    quantity: <%=product.quantity%><br>
-<%end%>
-<br>
+
+Receiver: <%=@user.name.capitalize%><br>
+Shipping Address: <%=@order.address%><br>
+
+<div class="row">
+
+  <%=@order_details.each do |product|%>
+    <div class="col-md-7">
+      <h4><%= product.product_name%></h4>
+      
+      £<%= product.purchase_price%>
+      <%= product.product_description%>
+      quantity: <%= product.quantity%>
+    </div>
+   <% end %>
+</div>
 <%=link_to 'back to past orders', orders_path%>

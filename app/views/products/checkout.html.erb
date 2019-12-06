@@ -1,15 +1,22 @@
-<%= link_to "back to basket", basket_path%>
-<h1>checkout</h1><br>
-<h3>order summary:</h3><br>
+<%= link_to "Go back to your basket", basket_path%>
+<h3>Your order summary:</h3>
+<div class="row">
 <%@basket.each do |item|%>
     <%product = Product.find(item[:product_id])%>
-    <h5><%=product.name%></h5><br>
-    <b>price: £<%=product.price_formatted%></b><br>
-    <b>quantity: <%=item[:quantity]%></b><br>
-    <b>subtotal: £<%="%.2f" % (product.price * item[:quantity])%></b><br><br>
-<%end%>
-<b>shipping cost: £<%="%.2f" % 5.00%>
-<h4>Total: £<%="%.2f" % (@user.basket_total + 5)%></h4><br>
+     <div class="col-md-9">
+       <p>
+        </span class="badge badge-info"> <%=product.name%></span>
+        Price: £<%=product.price_formatted%>
+        Quantity: <%=item[:quantity]%>
+        Subtotal: £<%="%.2f" % (product.price * item[:quantity])%>
+       </p>
+    </div>
+<% end %>
+</div>
+
+<b>Shipping cost: £<%="%.2f" % 5.00 %>
+<h4>Total: £<%="%.2f" % (@user.basket_total + 5)%> </h4>
+<br>
 
 <%= form_tag checkout_path do %>
     <label>Address:</label>
