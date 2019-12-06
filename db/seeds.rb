@@ -132,40 +132,44 @@ christmas3 = Product.create(
   name: "Candy cane christmas tape",
   description: "Mt masking tape is great for adding colour and organisation to your weekly planner spread and can also be written on to add notes to your planner, diary, journal or notebook that can be easily moved around or removed if no longer needed. This versatile and decorative tape is also perfect for making cute scrapbook and stationery embellishments such as paperclip flags or washi tape bunting or to make handmade cards and gift wrapping. (WARNING: HIGHLY FLAMMABLE. KEEP AWAY FROM PETS AND CHILDREN)",
   created_at: Time.now,
-  price: 10,
+  price: 4,
   stock_count: 30,
   user_id: seller_user2.id,
-  img_url: "https://i.etsystatic.com/7323865/r/il/5cd13f/2050441090/il_794xN.2050441090_5mmi.jpg"
+  img_url: "https://i.etsystatic.com/13280212/r/il/c9a22e/1334967757/il_794xN.1334967757_3pt6.jpg"
 )
 
-Jumper = Product.create(
-  name: "#{Faker::Hipster.word.capitalize} Jumper",
-  description: Faker::Hipster.sentence,
+christmas4 = Product.create(
+  name: "Llama jumper",
+  description: "Feel the llama love this christmas. Or don't, your call. (WARNING: HIGHLY FLAMMABLE. KEEP AWAY FROM PETS AND CHILDREN)",
   created_at: Time.now,
   price: 20,
-  stock_count: 5,
+  stock_count: 10,
   user_id: seller_user2.id,
   img_url: "https://i.etsystatic.com/14450461/r/il/bb91c3/2087862590/il_1588xN.2087862590_twb7.jpg"
 )
 
-Jumper2 = Product.create(
-  name: "#{Faker::Hipster.word.capitalize} Jumper 2",
-  description: Faker::Hipster.sentence,
+christmas4 = Product.create(
+  name: "Llama jumper",
+  description: "Feel the llama love this christmas. Or don't, your call. (WARNING: HIGHLY FLAMMABLE. KEEP AWAY FROM PETS AND CHILDREN)",
   created_at: Time.now,
   price: 20,
-  stock_count: 5,
+  stock_count: 10,
   user_id: seller_user2.id,
   img_url: "https://i.etsystatic.com/14450461/r/il/bb91c3/2087862590/il_1588xN.2087862590_twb7.jpg"
+)
+
+christmas5 = Product.create(
+  name: "Christmas tree hat",
+  description: "Do it. Look like an idiot this christmas. Buy this hat. We dare you. (WARNING: HIGHLY FLAMMABLE. KEEP AWAY FROM PETS AND CHILDREN)",
+  created_at: Time.now,
+  price: 2,
+  stock_count: 100,
+  user_id: seller_user2.id,
+  img_url: "https://i.etsystatic.com/19005213/r/il/393d7f/2137958995/il_794xN.2137958995_ilkx.jpg"
 )
 
 handmade_tag = Tag.create(
   name: "handmade"
-)
-ceramic_tag = Tag.create(
-  name: "ceramic"
-)
-silver_tag = Tag.create(
-  name: "silver"
 )
 
 cow_tag = Tag.create(
@@ -182,23 +186,24 @@ pin_tag = Tag.create(
   name: "pin"
 )
 
-#cow1.add_tag_by_id(cow_tag.id)
-cow2.add_tag_by_id(cow_tag.id)
-cow3.add_tag_by_id(cow_tag.id)
-#cow1.add_tag_by_id(goes_moo_tag.id)
-cow2.add_tag_by_id(goes_moo_tag.id)
-cow3.add_tag_by_id(goes_moo_tag.id)
-cow1.add_tag_by_id(very_large_tag.id)
-cow2.add_tag_by_id(very_large_tag.id)
-cow4.add_tag_by_id(very_large_tag.id)
+shiny_tag = Tag.create(
+  name: "shiny"
+)
 
-pin1.add_tag_by_id(pin_tag.id)
+shiny_tag = Tag.create(
+  name: "shiny"
+)
 
-#earrings.add_tag_by_id(handmade_tag.id)
-#earrings.add_tag_by_id(ceramic_tag.id)
-#necklace.add_tag_by_id(handmade_tag.id)
-#necklace.add_tag_by_id(silver_tag.id)
-#hat.add_tag_by_id(handmade_tag.id)
+[cow1, cow2, cow3, cow4].each{|cow|cow.add_tag_by_id(cow_tag.id)}
+[cow1, cow3, cow4].each{|cow|cow.add_tag_by_id(very_large_tag.id)}
+[cow1, cow2, cow3, cow4].each{|cow|cow.add_tag_by_id(goes_moo_tag.id)}
+
+[pin1, pin2, pin3, pin4, pin5].each{|pin|pin.add_tag_by_id(pin_tag.id)}
+[pin1, pin3].each{|pin|pin.add_tag_by_id(shiny_tag.id)}
+[pin1, pin2, pin3].each{|pin|pin.add_tag_by_id(handmade_tag.id)}
+
+
+
 
 # User.find(1)
 # User.find(2)
