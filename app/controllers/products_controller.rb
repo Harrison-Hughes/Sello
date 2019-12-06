@@ -3,8 +3,15 @@ class ProductsController < ApplicationController
   before_action :authorize_user, only: [:new, :create, :edit, :update, :destroy, :basket, :checkout]
 
   def index
-    @products = Product.all
-    current_user ? @user = current_user : @user = nil
+    # if params[:q] == nil || params[:q] == ""
+      @products = Product.all
+      @tags = Tag.all.map(&:name).uniq
+      current_user ? @user = current_user : @user = nil
+    # else
+    #   tag = ProductTag.all.select{|p| p.tag == Tag.find_by(name: params[:q])}
+    #   byebug
+    #   # @products = Product.all.select {|product| product.}
+    # end
   end
 
   def new

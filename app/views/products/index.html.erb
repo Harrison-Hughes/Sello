@@ -1,7 +1,17 @@
 <p>Welcome <%= @user.name if @user%>! </p>
 <div>
   <h1 class="text-center">Christmas Best Sellers </h1>
- 
+
+  <div class="text-right"> 
+  <%= form_tag("/", method: "get") do %>
+  <h5> <%= label_tag(:q, "Filter by:") %> <br></h5>
+  <% @tags.each do |tag| %>
+    <%= label_tag(:q, "#{tag}") %> 
+    <%= check_box_tag(:q, value = tag) %>
+    <% end %>
+  <%= submit_tag("Apply Filter") %>
+<% end %>
+</div>
 </div><br>
 
 <div class="row">
