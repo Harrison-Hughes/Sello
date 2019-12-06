@@ -64,6 +64,8 @@
           <a class="nav-item" href="/products/new">Sell Product</a>
           <a class="nav-item" href="/users/<%= session[:user_id]%>">Account</a>
           <a class="nav-item" href="/orders">Orders</a>
+          <%= link_to 'Listing', my_products_path(current_user.id) %>
+       
         <% end %>
         <a class="nav-item" href="/">Homepage</a>
     </div>

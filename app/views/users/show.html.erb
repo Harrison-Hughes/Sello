@@ -9,13 +9,3 @@
     <h6><%= link_to  "Edit Account", edit_user_path %></h6>
   </div>
 </div>
-
-<% @user.products.each do |product|%>
-  <li>
-    <h3> <%= product.name.capitalize%> </h3> 
-    <p> <%= product.description.capitalize%> </p> 
-    <h6> <%= link_to  "More info", product_path(product) %> </h6>
-    <br>
-  </li>
-<%end%>
-
