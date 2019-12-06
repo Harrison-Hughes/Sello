@@ -5,17 +5,8 @@
     <h4><%=link_to product.name, product_path(product.id)%></h4>
     <%=product.description%><br>
     <b>price: £<%=product.price_formatted%></b><br>
-    <b>quantity: <%=item[:quantity]%></b><br>
-    <%= form_tag remove_one_from_basket_path do %>
-      <%= hidden_field_tag 'product_id', product.id%>
-      <%= submit_tag "Remove from basket" %>
-    <% end %>
-    <%= form_tag remove_all_from_basket_path do %>
-      <%= hidden_field_tag 'product_id', product.id%>
-      <%= submit_tag "Remove all from basket" %>
-    <% end %>
-    <br><br>
-<%end%>
+    <b>quantity: <%=item[:quantity]%></b><br><br>
+<% end %>
 
  <%= link_to "Checkout", checkout_path, :class => "btn btn-success btn-lg" %>
  <br>
